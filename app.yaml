@@ -1,0 +1,25 @@
+runtime: python37
+
+# Storing values in environment variables. This use is optional but convenient
+env_variables:
+  APP_NAME: '<<app-name>>'
+  DOMAIN_NAME: '<<homepage-url>>'
+  IMGIX_ROOT: '<<cdn-image-root-url'
+  DEFAULT_LANGUAGE: 'en'
+  BRAND: '<<brand-name>>'
+
+handlers:
+  # This configures Google App Engine to serve the files in the app's static directory.
+- url: /static
+  static_dir: static
+  expiration: 7d
+
+  # Moves ico/txt/png from the root folder to the server root. Used for icons and robots.txt
+- url: /(.*\.(ico|txt|png))
+  static_files: root/\1
+  upload: root/.*\.(ico|txt|png)
+
+  # This handler routes all requests not addressed above to the main app. 
+- url: /.*
+  script: auto
+  secure: always
