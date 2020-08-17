@@ -2,7 +2,7 @@ runtime: python37
 
 # Storing values in environment variables. This use is optional but convenient
 env_variables:
-  APP_NAME: '<<app-name>>'
+  APP_NAME: '<<app-id>>' # the google app engine projet id
   DOMAIN_NAME: '<<homepage-url>>'
   IMGIX_ROOT: '<<cdn-image-root-url'
   DEFAULT_LANGUAGE: 'en'
