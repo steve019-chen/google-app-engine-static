@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		{% block meta %}
+		{% endblock %}
+		<link href="/favicon.ico" rel="shortcut icon" />
+    <style>
+
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="wrapper">
+				<h1>Site Header</h1>
+			</div>
+		</header>
+		{% block content %}
+		{% endblock %}
+		<footer>
+			<div class="wrapper">
+				<p>Site Footer</p>
+			</div>
+		</footer>
+	  <script>function generateUUID(){var b=(new Date).getTime(),a="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(a){var c=(b+16*Math.random())%16|0;b=Math.floor(b/16);return("x"==a?c:c&7|8).toString(16)});return a}function getCookieUUID(){var b=document.cookie;b=b.split(";");for(var a,d,c=0;c<b.length;c++)if(d=b[c].toString(),a=d.split("\x3d")[0],d=d.split("\x3d")[1],a=a.replace(" ",""),"uuid"==a+"")return d.replace(" ","");return""}
+	  function setCookieUUID(b,a,d){var c="uuid",f=new Date,e=new Date;if(null==a||0==a)a=1;e.setTime(f.getTime()+864E5*a);document.cookie=c+"\x3d"+escape(b)+";SameSite=Strict;expires\x3d"+e.toGMTString()+";path\x3d/;domain\x3d"+d}var myuuidv4=getCookieUUID(),myhost=window.location.hostname,mydomainparts=myhost.split("."),mydomainprefix=mydomainparts[0],mydomain=mydomain="."+myhost;myuuidv4&&""!=myuuidv4||(myuuidv4=generateUUID());setCookieUUID(myuuidv4,360,mydomain);</script>
+	</body>
+</html>
