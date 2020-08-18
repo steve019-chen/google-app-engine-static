@@ -1,2 +1,2 @@
 # google-app-engine-static
-Core Application for Static Website hosting on Google Cloud
+Application to host a Static Website on Google Cloud
