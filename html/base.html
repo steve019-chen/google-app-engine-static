@@ -6,7 +6,7 @@
 		{% block meta %}
 		{% endblock %}
 		<link href="/favicon.ico" rel="shortcut icon" />
-		<style>
+		<style nonce="{{ csp_nonce() }}">
 		</style>
 	</head>
 	<body>
