@@ -4,10 +4,10 @@ Repository to setup a website with static web pages hosted in Google Cloud. Cont
 
 ## Steps to Implement
 1. Create a project in Google Cloud Console: https://console.cloud.google.com
-2. Pull a clone of this repository: https://github.com/KHMuller/google-app-engine-static
-3. Modify html/base.html and html/home.html for your website.
+2. Clone this repository to your HD.
+3. Adjust html/base.html and html/home.html for your website.
 4. Deploy the updated site to Google cloud (sudo gcloud app deploy --project projectid --no-promote)
-5. Test your new website with the provided version url
+5. Review your new website with the version url provided.
 
 You may want to bind your new Google Cloud project with a proper domain name. How this is done is well described in the Google Cloud documentation.
 
