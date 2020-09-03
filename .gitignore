@@ -1,8 +1,6 @@
-__pycache__
-.vscode
-
-/env
+/__pycache__
+/.vscode
 /docs
+/env
 
-.gcloudignore
 .DS_Store
