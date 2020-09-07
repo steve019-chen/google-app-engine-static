@@ -1,6 +1,6 @@
 # Website Hosted in Google Cloud
 
-Repository to setup a website with static web pages hosted in Google Cloud. Content of each page of the website is maintained with a dedicated template. All templates share a common base template.
+Repository to host a template driven static website in Google Cloud with web page content maintained as in separate html files locally.
 
 ## Steps to Implement
 1. Create a project in Google Cloud Console: https://console.cloud.google.com
