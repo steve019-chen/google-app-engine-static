@@ -6,4 +6,4 @@
 
 """
 documents = {}
-documents['/'] = { 'template' : '/home.html', 'published': '2020-01-01', 'modified': '2020-01-01', 'priority': '1.0' }
+documents['/'] = { 'modified': '2020-01-01', 'template' : '/home.html', 'priority': '1.0' }
