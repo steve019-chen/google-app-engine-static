@@ -48,41 +48,12 @@ IMGIX_ROOT = os.environ.get('IMGIX_ROOT')
 DEFAULT_LANGUAGE = os.environ.get('DEFAULT_LANGUAGE')
 BRAND = os.environ.get('BRAND')
 
-@app.errorhandler(404)
-def page_not_found(e):
-    requestdata = {
-        'path': request.path,
-        'query': request.query_string,
-        'referrer': request.headers.get("Referer")
-    }
-    visitor = {
-        'city': request.headers.get('X-AppEngine-City'),
-        'region': request.headers.get('X-AppEngine-Region'),
-        'country': request.headers.get('X-AppEngine-Country'),
-        'latlang': request.headers.get('X-AppEngine-Citylatlong'),
-        'ip': request.headers.get('X-Forwarded-For', request.remote_addr),
-        'agent': request.headers.get('User-Agent'),
-        'uuid': request.cookies.get("uuid")
-    }
-    header = {
-        'lang': 'en',
-        'brand': BRAND,
-        'title': 'Oops! Page Not Found. Error 404',
-        'keywords': '',
-        'description': '',
-        'canonical': '',
-        'media': '',
-        'headline': 'Oops! Looks like the page doesn\'t exist anymore.',
-        'introduction': str(e),
-        'breadcrumb' : ''
-    }
-    return render_template('/error.html',
-        requestdata=requestdata,
-        visitor=visitor,
-        header=header), 404
+@app.errorhandler(Exception)
+def custom_error_handler(e):
+    # Catch set of 300 errors
+    if e.code < 400: return e
 
-@app.errorhandler(403)
-def access_denied(e):
+    # Custom format all 400+ errors
     requestdata = {
         'path': request.path,
         'query': request.query_string,
@@ -100,52 +71,19 @@ def access_denied(e):
     header = {
         'lang': 'en',
         'brand': BRAND,
-        'title': 'Oops! Access Denied. Error 403',
+        'title': e.name,
         'keywords': '',
-        'description': '',
+        'description': 'Code: ' + str(type(e.code)) + ' / Name: ' + str(e.name) + ' / Description: ' + str(e.description),
         'canonical': '',
         'media': '',
-        'headline': 'Oops! Access Denied. Weird.',
-        'introduction': str(e),
+        'headline': str(e.code) + ' ' + e.name,
+        'introduction': e.description,
         'breadcrumb' : ''
     }
     return render_template('/error.html',
         requestdata=requestdata,
         visitor=visitor,
-        header=header), 403
-
-@app.errorhandler(500)
-def application_error(e):
-    requestdata = {
-        'path': request.path,
-        'query': request.query_string,
-        'referrer': request.headers.get("Referer")
-    }
-    visitor = {
-        'city': request.headers.get('X-AppEngine-City'),
-        'region': request.headers.get('X-AppEngine-Region'),
-        'country': request.headers.get('X-AppEngine-Country'),
-        'latlang': request.headers.get('X-AppEngine-Citylatlong'),
-        'ip': request.headers.get('X-Forwarded-For', request.remote_addr),
-        'agent': request.headers.get('User-Agent'),
-        'uuid': request.cookies.get("uuid")
-    }
-    header = {
-        'lang': 'en',
-        'brand': BRAND,
-        'title': 'An Application Error has Ocurred. Error 500',
-        'keywords': '',
-        'description': '',
-        'canonical': '',
-        'media': '',
-        'headline': 'Oops! An Application Error has Ocurred.',
-        'introduction': str(e),
-        'breadcrumb' : ''
-    }
-    return render_template('/error.html',
-        requestdata=requestdata,
-        visitor=visitor,
-        header=header), 500
+        header=header), e.code
 
 @app.route('/')
 def homepage():
