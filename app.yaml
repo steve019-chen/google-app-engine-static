@@ -1,12 +1,12 @@
-runtime: python37
+runtime: python39
 
 # Storing values in environment variables. This use is optional but convenient
 env_variables:
-  APP_NAME: '<<app-id>>' # the google app engine projet id
-  DOMAIN_NAME: '<<homepage-url>>'
-  IMGIX_ROOT: '<<cdn-image-root-url'
+  APP_NAME: 'dldi-lab-e99e51' # the google app engine projet id
+  DOMAIN_NAME: 'dldi-lab-e99e51.uc.r.appspot.com'
+  IMGIX_ROOT: '/'
   DEFAULT_LANGUAGE: 'en'
-  BRAND: '<<brand-name>>'
+  BRAND: 'dldi'
 
 handlers:
   # This configures Google App Engine to serve the files in the app's static directory.
